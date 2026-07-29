@@ -6,7 +6,7 @@ services:
       MSSQL_SA_PASSWORD: "Password1@"
       ACCEPT_EULA: "Y"
     ports:
-      - "1433:1433"
+      - "1433:1433" # External port, Aita bahire theke pabe: Docker Internal port
 
 
 

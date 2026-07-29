@@ -20,6 +20,7 @@ namespace Infrastructure.Data
     }
 }
 
+// need dotnet-ef package in Infrastructure project to run migrations commands
 // dotnet ef migrations add InitialCreate -p Infrastructure -s API
 // dotnet ef migrations remove -p Infrastructure -s API
 // dotnet ef database update -p Infrastructure -s API
