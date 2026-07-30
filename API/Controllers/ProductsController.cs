@@ -75,6 +75,19 @@ namespace API.Controllers
             return BadRequest("Failed to delete product");
         }
 
+        [HttpGet("brands")]
+        public async Task<ActionResult<IReadOnlyList<string>>> GetBrands()
+        {
+            return Ok(await repository.GetBrandsAsync());
+        }
+
+        [HttpGet("types")]
+        public async Task<ActionResult<IReadOnlyList<string>>> GetTypes()
+        {
+            return Ok(await repository.GetTypesAsync());
+        }
+
+
         private bool ProductExists(int id)
         {
             return repository.ProductExists(id);
