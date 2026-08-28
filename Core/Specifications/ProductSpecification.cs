@@ -9,9 +9,13 @@ namespace Core.Specifications
     {
         public ProductSpecification(ProductSpecParams specParams)
             : base(p => 
+            (string.IsNullOrEmpty(specParams.Search) || p.Name.ToLower().Contains(specParams.Search)) &&
             (!specParams.Brands.Any() || specParams.Brands.Contains(p.Brand)) 
             && (!specParams.Types.Any() || specParams.Types.Contains(p.Type)))
         {
+            ApplyPaging(specParams.PageSize * (specParams.PageIndex - 1), specParams.PageSize);
+
+
             switch (specParams.Sort)
             {
                 case "priceAsc":
