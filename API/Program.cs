@@ -1,3 +1,4 @@
+using API.Middleware;
 using Core.Interfaces;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -21,6 +22,9 @@ builder.Services.AddOpenApi();
 builder.Services.AddEndpointsApiExplorer(); // For API exploere services
 builder.Services.AddSwaggerGen();
 
+//CORS
+builder.Services.AddCors();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -32,6 +36,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger(); // Add endpoint that can serve the swagger.json
     app.UseSwaggerUI(); // Adds swagger UI
 }
+
+app.UseMiddleware<ExceptionMiddleware>();
+
+// CORS
+app.UseCors(options => options.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200", "https://localhost:4200"));
 
 app.MapControllers();
 
