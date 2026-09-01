@@ -30,7 +30,7 @@ namespace API.Controllers
             throw new Exception("This is a test exception");
         }
 
-        [HttpGet("validationerror")]
+        [HttpPost("validationerror")]
         public IActionResult GetValidationError(CreateProductDto product)
         {
             return Ok(); // 401 Unauthorized
