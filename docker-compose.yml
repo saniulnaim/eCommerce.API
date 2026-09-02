@@ -7,6 +7,20 @@ services:
       ACCEPT_EULA: "Y"
     ports:
       - "1433:1433" # External port, Aita bahire theke pabe: Docker Internal port
+    volumes:
+      - sql-data:/var/opt/mssql
+  redis:
+    image: redis:latest
+    container_name: redis_server
+    ports:
+      - "6379:6379" # External port, Aita bahire theke pabe: Docker Internal port
+    volumes:
+      - redis-data:/data
+
+volumes:
+  redis-data:
+  sql-data:
+      
 
 
 
